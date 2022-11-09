@@ -1,18 +1,112 @@
-body {
-    background-color: darkslategray;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Roboto+Mono&display=swap');
+
+#background {
+	background-color: #1fc8db;
+	background: rgb(2,0,36);
+	background: linear-gradient(9deg, rgba(2,0,36,1) 0%, rgba(65,9,121,1) 35%, rgba(158,0,255,1) 100%);
+	color: white;
+	text-align:center;
+	font-size:30px;
+	font-weight:550;
+	position:fixed;
+	padding:0;
+	margin:0;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
 
-h1 {
-    color: white;
-    text-align: center;
+body {
+	color: rgb(231, 191, 231);
+	font-family: 'Roboto Mono';
+	font-size: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+@keyframes loadmain {
+	from {opacity: 0; top: 25px;}
+	to {opacity: 1; top: 0px;}
+}
+
+h1#main {
+	font-family: 'Comfortaa';
+	text-align: center;
+	font-size: 50px;
+	padding-top: 50px;
+	position: relative;
+	opacity: 0;
+	top: 25px;
+	animation-name: loadmain;
+	animation-duration: 1.5s;
+	animation-fill-mode:forwards
+}
+
+#pfp.loading {
+	opacity: 0;
+	top: 25px;
+	animation-name: loadmain;
+	animation-duration: 1.5s;
+	animation-delay: 0.5s;
+	animation-fill-mode:forwards
+}
+
+#pfp {
+	position: relative;
+	border-radius:100%;
+	width: 300px;
+	height: 300px;
+	object-fit: cover; 
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#pfp.loaded {
+	animation: unhoverpfp;
+	animation-duration: 0.3s;
+	animation-fill-mode:forwards
+}
+
+@keyframes hoverpfp {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(1.05);
+	}
+}
+
+@keyframes unhoverpfp {
+	from {
+		transform: scale(1.05);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+#pfp.loaded:hover {
+	animation: hoverpfp;
+	animation-duration: 0.3s;
+	animation-fill-mode:forwards
 }
 
 p {
-    color: white;
-    margin-left: 300px;
-    margin-right: 300px;
-}
-
-a {
-    color: lightblue;
+	position: relative;
+	opacity: 0;
+	top: 25px;
+	animation-name: loadmain;
+	animation-duration: 1.5s;
+	animation-delay: 1s;
+	animation-fill-mode:forwards;
+	text-align: center;
 }

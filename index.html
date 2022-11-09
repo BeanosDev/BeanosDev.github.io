@@ -1,15 +1,32 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test</title>
+	<link rel="stylesheet" href="styles.css">
+	<script>
+		var ifloaded = 0
+		setTimeout(function(){
+			ifloaded += 1
+		},1500);
 
-<html>
-    <head>
-        <title>Welcome!</title>
-        <h1>Welcome to beanos.dev :)</h1>
-        <link rel="stylesheet" href="https://beanos.dev/styles.css">
-    </head>
-    <body>
-        <ul>
-            <li><a href="https://beanos.dev/minehut">Minehut</a></li>
-            <li><a href="https://roblox.com">Roblox</a></li>
-        </ul>
-    </body>
+		function hover() {
+			if(ifloaded === 1) {
+				document.getElementById('pfp').className = 'loaded'
+			}	
+		}
+	</script>
+</head>
+<body class="preload">
+	<div id="background"></div>
+	<h1 id="main"><i>Hey, I'm Beanos</i></h1>
+	<img src="assets/Beanos.png" id="pfp" class="loading"onmouseover="hover(this)">
+	<p>I'm a 16 year old developer from Norway. This website is pretty new, and it'll be updated frequently.</p>
+	<p style="text-align: center;">
+		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfnxvF-VcpFvKOOiFGVhYMUDVWmoglHkaer4aIlgaPjGxLXGg/viewform?embedded=true" width="640" height="439" frameborder="0" marginheight="0" marginwidth="0" st>Laster inn …</iframe>
+	</p>
+	
+</body>
 </html>
