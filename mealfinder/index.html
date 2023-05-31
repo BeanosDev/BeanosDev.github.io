@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Recipe</title>
+	<link rel="stylesheet" href="https://beanos.dev/styles.css">
+	<style>
+		div.container {
+			text-align: center;
+		}
+
+			ul#inglist {
+			display: inline-block;
+			text-align: left;
+		}
+		a {
+			text-align: center;
+			color: rgb(208, 125, 160);
+		}
+	</style>
+</head>
+<body>
+	<div id="background"></div>
+	<p id="info">
+		<i>
+			The instructions may be unformatted, but that's just how the API returns it.<br>
+			Refresh webpage for a new recipe.
+		</i>
+	</p>
+	<h1 id="main">Loading...</h1>
+	<img id="mealimg" src="Loading..." style="
+    border-radius: 10%;
+	width: 75%;
+	max-width: 350px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;">
+	<div class="container"><ul id="inglist">
+
+	</ul></div>
+	<a href="https://www.google.com/maps/search/grocery+store" target=”_blank”><p style="text-align: center;">Find nearest grocery store</p></a>
+	<p>- - - - - - - - - -</p>
+	<p id="mealinstr">Loading...</p>
+	<script>
+		const Http = new XMLHttpRequest();
+		const url='https://www.themealdb.com/api/json/v1/1/random.php';
+		var ingred = "";
+		Http.open("GET", url);
+		Http.send();
+		Http.onreadystatechange = function() {
+			if (Http.readyState == XMLHttpRequest.DONE) {
+				const obj = JSON.parse(Http.responseText);
+				object = obj
+				document.getElementById('main').innerHTML = obj['meals'][0]['strMeal'];
+				document.getElementById('mealimg').src = obj['meals'][0]['strMealThumb'];
+				document.getElementById('mealinstr').innerHTML = obj['meals'][0]['strInstructions'].replaceAll('\r\n', '<br><br>') + "<br><br>";
+				for (let i = 0; i < 20; i++) {
+					if (obj['meals'][0]["strMeasure" + (i + 1)] === " ") {
+						console.log("no")
+					} else {
+						ingred = ingred + ("<li>" + obj['meals'][0]["strMeasure" + (i + 1)]) + " " + (obj['meals'][0]["strIngredient" + (i + 1)] + "</li>")
+					}
+					
+				}
+				document.getElementById('inglist').innerHTML = ingred
+			}
+		}
+		
+	</script>
+</body>
+</html>

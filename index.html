@@ -18,20 +18,11 @@
 			}	
 		}
 	</script>
-	<script>
-		var dob = new Date("02/18/2006");
-		var month_diff = Date.now() - dob.getTime();
-		var age_dt = new Date(month_diff);
-		var year = age_dt.getUTCFullYear();
-		var age = Math.abs(year - 1970);
-		document.getElementById('age').innerText = "I'm a " + age + " year old developer from Norway."
-	</script>
 </head>
 <body class="preload">
 	<div id="background"></div>
 	<h1 id="main"><i>Hey, I'm Beanos</i></h1>
 	<img src="assets/beanos.png" id="pfp" class="loading"onmouseover="hover(this)">
-	<p id="age">Loading.</p>
-	
+	<p id="age">I'm a 17 year old developer from Norway. This website is pretty new, and will be updated frequently.</p>
 </body>
 </html>
