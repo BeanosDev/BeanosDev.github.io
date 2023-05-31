@@ -28,7 +28,7 @@
 			The instructions may be unformatted, but that's just how the API returns it.<br>
 		</i>
 	</p>
-	<a href="https://beanos.dev/mealfinder/index.html"><p style="text-align: center;">Click here to generate new recipe</p></a>
+	<a href="https://beanos.dev/mealfinder"><p style="text-align: center;">Click here to generate new recipe</p></a>
 	<h1 id="main">Loading...</h1>
 	<img id="mealimg" src="Loading..." style="
     border-radius: 10%;
@@ -59,7 +59,7 @@
 				if (Http.readyState == XMLHttpRequest.DONE) {
 					const obj = JSON.parse(Http.responseText);
 					object = obj
-					window.location.href = "https://beanos.dev/mealfinder/index.html?id=" + obj['meals'][0]['idMeal'];
+					window.location.href = "https://beanos.dev/mealfinder?id=" + obj['meals'][0]['idMeal'];
 				}
 			}
 		} else {
