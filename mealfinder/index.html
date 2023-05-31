@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Random Recipe</title>
-	<link rel="stylesheet" href="https://beanos.dev/styles.css">
+	<link rel="stylesheet" href="https://https://beanos.dev//styles.css">
 	<style>
 		div.container {
 			text-align: center;
@@ -26,9 +26,9 @@
 	<p id="info">
 		<i>
 			The instructions may be unformatted, but that's just how the API returns it.<br>
-			Refresh webpage for a new recipe.
 		</i>
 	</p>
+	<a href="https://beanos.dev/mealfinder/index.html"><p style="text-align: center;">Click here to generate new recipe</p></a>
 	<h1 id="main">Loading...</h1>
 	<img id="mealimg" src="Loading..." style="
     border-radius: 10%;
@@ -46,29 +46,45 @@
 	<p id="mealinstr">Loading...</p>
 	<script>
 		const Http = new XMLHttpRequest();
-		const url='https://www.themealdb.com/api/json/v1/1/random.php';
+		const randomurl='https://www.themealdb.com/api/json/v1/1/random.php';
+		const lookupid='https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 		var ingred = "";
-		Http.open("GET", url);
-		Http.send();
-		Http.onreadystatechange = function() {
-			if (Http.readyState == XMLHttpRequest.DONE) {
-				const obj = JSON.parse(Http.responseText);
-				object = obj
-				document.getElementById('main').innerHTML = obj['meals'][0]['strMeal'];
-				document.getElementById('mealimg').src = obj['meals'][0]['strMealThumb'];
-				document.getElementById('mealinstr').innerHTML = obj['meals'][0]['strInstructions'].replaceAll('\r\n', '<br><br>') + "<br><br>";
-				for (let i = 0; i < 20; i++) {
-					if (obj['meals'][0]["strMeasure" + (i + 1)] === " ") {
-						console.log("no")
-					} else {
-						ingred = ingred + ("<li>" + obj['meals'][0]["strMeasure" + (i + 1)]) + " " + (obj['meals'][0]["strIngredient" + (i + 1)] + "</li>")
-					}
-					
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		console.log(urlParams.get('id'))
+		if (urlParams.get('id') == null) {
+			Http.open("GET", randomurl);
+			Http.send();
+			Http.onreadystatechange = function() {
+				if (Http.readyState == XMLHttpRequest.DONE) {
+					const obj = JSON.parse(Http.responseText);
+					object = obj
+					window.location.href = "https://beanos.dev/mealfinder/index.html?id=" + obj['meals'][0]['idMeal'];
 				}
-				document.getElementById('inglist').innerHTML = ingred
+			}
+		} else {
+			Http.open("GET", lookupid + urlParams.get('id'));
+			Http.send();
+			Http.onreadystatechange = function() {
+				if (Http.readyState == XMLHttpRequest.DONE) {
+					const obj = JSON.parse(Http.responseText);
+					object = obj;
+					document.title = obj['meals'][0]['strMeal'] + " | Random Recipe";
+					document.getElementById('main').innerHTML = obj['meals'][0]['strMeal'];
+					document.getElementById('mealimg').src = obj['meals'][0]['strMealThumb'];
+					document.getElementById('mealinstr').innerHTML = obj['meals'][0]['strInstructions'].replaceAll('\r\n', '<br><br>') + "<br><br>";
+					for (let i = 0; i < 20; i++) {
+						if (obj['meals'][0]["strMeasure" + (i + 1)] === " ") {
+							console.log("no")
+						} else {
+							ingred = ingred + ("<li>" + obj['meals'][0]["strMeasure" + (i + 1)]) + " " + (obj['meals'][0]["strIngredient" + (i + 1)] + "</li>")
+						}
+						
+					}
+					document.getElementById('inglist').innerHTML = ingred;
+				}
 			}
 		}
-		
 	</script>
 </body>
 </html>
