@@ -17,18 +17,25 @@
 				document.getElementById('pfp').className = 'loaded'
 			}	
 		}
-		
+	</script>
+</head>
+<body class="preload">
+	<div id="background"></div>
+	<h1 id="main"><i>Hey, I'm Beanos</i></h1>
+	<img src="assets/beanos.png" id="pfp" class="loading"onmouseover="hover(this)">
+	<p id="age">Updating...</p>
+	<script>
 		function calculateAge(dateOfBirth) {
-		    const today = new Date();
-		    const birthDate = new Date(dateOfBirth);
-		    let age = today.getFullYear() - birthDate.getFullYear();
-		    const monthDifference = today.getMonth() - birthDate.getMonth();
+			const today = new Date();
+			const birthDate = new Date(dateOfBirth);
+			let age = today.getFullYear() - birthDate.getFullYear();
+			const monthDifference = today.getMonth() - birthDate.getMonth();
 		
-		    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-		        age--;
-		    }
+			if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+				age--;
+			}
 		
-		    return age;
+			return age;
 		}
 		
 		// Example usage:
@@ -37,11 +44,6 @@
 		document.getElementById("age").innerHTML = `I'm a ${calculateAge(dateOfBirth)} year old developer from Norway. This website is pretty new, and will be updated frequently.`;
 
 	</script>
-</head>
-<body class="preload">
-	<div id="background"></div>
-	<h1 id="main"><i>Hey, I'm Beanos</i></h1>
-	<img src="assets/beanos.png" id="pfp" class="loading"onmouseover="hover(this)">
-	<p id="age">Updating...</p>
+	</script>
 </body>
 </html>
