@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Fira+Mono:wght@400;500;700&display=swap');
+
+html {
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #FF0000;
+}
+
+body {
+	margin: 0;
+	font-family: 'Fira Mono';
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	overflow: hidden;
+	background: radial-gradient(circle, #3f275c 1.3px, transparent 1px), linear-gradient(135deg, #56307B, #6B359D);
+	background-size: 20px 20px, cover;
+}
+
+#scroll-container {
+	overflow-y: auto;
+	height: 100%;
+	width: 100%;
+	padding-top: 50px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#main-card {
+	text-align: center;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.card-default-style {
+	backdrop-filter: blur(5px);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	margin-bottom: 35px;
+	border-radius: 20px;
+	padding: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	background: rgba(255, 255, 255, 0.1);
+	animation: slide-in 1.5s ease-in-out;
+	width: 90%;
+	max-width: 400px;
+	opacity: 0;
+}
+
+.card-hover {
+	transition: transform 0.2s ease;
+}
+
+.card-hover:hover {
+	transform: scale(1.03);
+}
+
+.new-card {
+	position: relative;
+}
+
+h1 {
+	font-size: 2rem;
+	margin: 0;
+	color: #d7bdf5;
+}
+
+h2 {
+	font-size: 1.5rem;
+	color: #d7bdf5;
+}
+
+p {
+	font-family: "Cascadia Code", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400px;
+	font-style: normal;
+	margin-top: 10px;
+	color: #e8d6f7;
+}
+
+li {
+	font-family: "Cascadia Code", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400px;
+	font-style: normal;
+}
+
+#main-links ul {
+	list-style: none;
+	padding: 0;
+}
+
+.links li {
+	margin: 10px 0;
+}
+
+.links a {
+	text-decoration: none;
+	color: #d7bdf5;
+	font-weight: bold;
+	transition: color 0.3s;
+}
+
+.links a:hover {
+	color: #b090d9;
+}
+
+/* Animations */
+@keyframes slide-in {
+	from {
+		transform: translateY(20px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
